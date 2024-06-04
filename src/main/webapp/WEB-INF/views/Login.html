@@ -1,0 +1,47 @@
+
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+
+     <link rel="stylesheet" th:href="@{/assets/css/bootstrap.min.css}" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <link rel="stylesheet" th:href="@{/assets/css/Header.css}" />
+<link rel="stylesheet" th:href="@{/assets/css/Login.css} "/>
+  <link rel="stylesheet" th:href="@{/assets/css/Footer.css}" />
+    <title>Login</title>
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+    <meta http-equiv="Pragma" content="no-cache" />
+    <meta http-equiv="Expires" content="0" />
+</head>
+<body>
+<!--<jsp:include page="Header.jsp"></jsp:include>-->
+<!-- Include Header Fragment -->
+<div th:if="${error}">
+            <div th:replace="~{error :: body}"></div>
+        </div>
+    <div th:replace="Header :: header"></div>
+<section class="login_back">
+    <h3>Login</h3>
+    <form action="login" method="post">
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" autocomplete="off" required><br>
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password" autocomplete="off" required><br>
+
+
+        <button class="login_btn" type="submit">Login</button>
+    </form>
+    <a href="ForgotPassword">Forgot Password</a>
+    ||
+    <a href="index">Register</a>
+</section>
+
+
+    <div th:if="${error}">
+         <div th:replace="error :: errorContent"></div>
+    </div>
+<div th:replace="Footer :: footer"></div>
+<script th:src="@{/assets/Js/Header.js}" defer></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+</body>
+</html>

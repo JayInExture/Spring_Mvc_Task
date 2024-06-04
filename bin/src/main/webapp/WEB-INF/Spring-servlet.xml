@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:mvc="http://www.springframework.org/schema/mvc"
+       xmlns:tx="http://www.springframework.org/schema/tx"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+                           http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd
+                           http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc.xsd
+                           http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd">
+
+    <context:component-scan base-package="Task.SpringMvc"/>
+
+    <!-- Enable Spring MVC -->
+    <mvc:annotation-driven/>
+
+    <!-- Static resources configuration -->
+    <mvc:resources mapping="/assets/**" location="/WEB-INF/assets/"/>
+
+    <!-- Thymeleaf Configuration -->
+    <bean id="templateResolver" class="org.thymeleaf.spring6.templateresolver.SpringResourceTemplateResolver">
+        <property name="prefix" value="/WEB-INF/views/"/>
+        <property name="suffix" value=".html"/>
+        <property name="templateMode" value="HTML"/>
+        <property name="characterEncoding" value="UTF-8"/>
+    </bean>
+
+    <bean id="templateEngine" class="org.thymeleaf.spring6.SpringTemplateEngine">
+        <property name="templateResolver" ref="templateResolver"/>
+        <property name="enableSpringELCompiler" value="true"/>
+    </bean>
+
+    <bean class="org.thymeleaf.spring6.view.ThymeleafViewResolver">
+        <property name="templateEngine" ref="templateEngine"/>
+        <property name="characterEncoding" value="UTF-8"/>
+    </bean>
+
+    <!-- DataSource Configuration -->
+    <bean id="dataSource" class="org.apache.commons.dbcp2.BasicDataSource">
+        <property name="driverClassName" value="com.mysql.cj.jdbc.Driver"/>
+        <property name="url" value="jdbc:mysql://localhost:3306/springmvctask"/>
+        <property name="username" value="root"/>
+        <property name="password" value="Mysql#1234"/>
+    </bean>
+
+    <!-- Hibernate SessionFactory Configuration -->
+    <bean id="sessionFactory" class="org.springframework.orm.hibernate5.LocalSessionFactoryBean">
+        <property name="dataSource" ref="dataSource"/>
+        <property name="packagesToScan" value="Task.SpringMvc.model"/>
+        <property name="hibernateProperties">
+            <props>
+                <prop key="hibernate.dialect">org.hibernate.dialect.MySQLDialect</prop>
+                <prop key="hibernate.show_sql">true</prop>
+                <prop key="hibernate.hbm2ddl.auto">update</prop>
+            </props>
+        </property>
+    </bean>
+
+    <!-- Transaction Manager -->
+    <bean id="transactionManager" class="org.springframework.orm.hibernate5.HibernateTransactionManager">
+        <property name="sessionFactory" ref="sessionFactory"/>
+    </bean>
+
+    <!-- Enable annotation-driven transaction management -->
+    <tx:annotation-driven/>
+
+</beans>

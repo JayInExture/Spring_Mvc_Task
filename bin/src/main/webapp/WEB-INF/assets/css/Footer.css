@@ -1,0 +1,22 @@
+.last-section{
+     bottom: 0%;
+     top: 100%;
+     position: sticky;
+     width: 100%;
+    margin-top: 5%;
+    display: flex;
+    background-color: #252525;
+    color: #FF3232;
+    flex-direction: column;
+    text-align: center;
+    padding: 2% 0%;
+}
+.log-div{
+    justify-content: center;
+    display: flex;
+    gap: 2%;
+    color: white;
+}
+.bi:hover{
+color: gold;
+}

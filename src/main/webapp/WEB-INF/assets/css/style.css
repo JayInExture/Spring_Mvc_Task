@@ -1,0 +1,127 @@
+body{
+    background-color: #252525;
+    color: #ffff;
+   padding: 2%;
+}
+header>div {
+    font-weight: 700;
+    font-size: 35px;
+    text-align: center;
+}
+section.container{
+    margin-top: 2%;
+    border: 0.2rem solid gold;
+    border-radius: 10px;
+    box-shadow: 0px 0px  50px #52d4ff;
+    margin-bottom: 2%;
+}
+.address-field>input{
+margin-top:2%;
+}
+section.container {
+    width: 50%;
+}
+form.container {
+    width: 50%;
+}
+
+form {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+
+}
+
+label{
+    align-self: start;
+}
+
+form>p{
+    color:#b872ff;
+    padding-top: 1%;
+    padding-left: 2%;
+    text-align: left;
+    width: 100%;
+}
+form>p span {
+    color: red;
+}
+form>div {
+    padding: 3% 2%;
+    width: 100%;
+}
+
+button.btn.btn-danger.delete-address {
+    margin: 2% 0%;
+}
+
+.lst-btn{
+    display: flex;
+    justify-content: center;
+}
+
+.form-label::before{
+content: "*";
+color:  red;
+}
+
+
+.a {
+    text-align: center;
+}
+
+
+.btn-success:hover {
+     color: #fff;
+     background-color: transparent;
+     border-color: #37ffa2;
+     box-shadow: 0px 0px 35px #ff4b4b;
+ }
+
+
+img.preview-image {
+    display: block;
+    max-width: 100%;
+        padding: 4%;
+}
+
+.image-wrapper .remove-image {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+        background-color: rgb(255 0 0 / 50%);
+    border-radius: 50%;
+    width: 20px;
+    height: 20px;
+    text-align: center;
+    line-height: 20px;
+    cursor: pointer;
+    opacity: 0; /* Initially hide the X symbol */
+    transition: opacity 0.3s ease; /* Add transition for smooth animation */
+}
+
+.image-wrapper:hover .remove-image {
+    opacity: 1; /* Show the X symbol on hover */
+}
+
+
+.dropzone .dz-preview {
+    position: relative;
+    display: inline-block;
+    vertical-align: top;
+    margin: 16px;
+    /* min-height: 100px; */
+}
+
+
+img {
+    width: 100%;
+    height: 100%;
+}
+
+
+
+
+
+

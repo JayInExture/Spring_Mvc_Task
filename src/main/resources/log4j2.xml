@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration status="INFO">
+    <Appenders>
+        <File name="SpringTask" fileName="E:\Bharat Sir\SpringMvcTask\Spring_Mvc_Task\Logs\SpringTask.log">
+            <PatternLayout>
+                <Pattern>
+                    %c %d -  [%M] -(%p) %m %n
+                </Pattern>
+            </PatternLayout>
+        </File>
+    </Appenders>
+    <Loggers>
+        <Root level="INFO">
+            <AppenderRef ref="SpringTask" />
+        </Root>
+    </Loggers>
+</Configuration>

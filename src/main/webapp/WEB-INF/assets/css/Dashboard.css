@@ -1,0 +1,143 @@
+body{
+text-align:center;
+}
+.user_d {
+    display: flex;
+    flex-direction: column;
+}
+.common{
+    display: flex;
+    justify-content: space-between;
+}
+input[type="submit"] {
+    background-color: cornflowerblue;
+    border-radius: 10px;
+}
+
+section.admin_dash {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+
+div#adminTable_wrapper {
+    background-color: transparent;
+}
+
+table {
+     display: table;
+     border-collapse: separate;
+     box-sizing: border-box;
+     text-indent: initial;
+     unicode-bidi: isolate;
+     border-spacing: 2px;
+     border-color: white;
+     border: 1px solid;
+ }
+
+ table.dataTable.no-footer {
+     border-bottom: 1px solid white;
+ }
+tbody{
+background-color: transparent;
+}
+.dataTables_wrapper .dataTables_filter input {
+    border: 1px solid #aaa;
+    border-radius: 3px;
+    padding: 5px;
+    background-color: transparent;
+    margin-left: 3px;
+    color: red;
+}
+
+#adminTable{
+color: white ;
+    background-color: #252525; /* Change this to the desired background color */
+}
+
+#adminTable_wrapper{
+color:white;
+}
+
+#adminTable_wrapper label{
+color:white;
+}
+
+.dataTables_wrapper .dataTables_paginate .paginate_button.disabled{
+color: white !important;
+}
+
+#adminTable_wrapper, #adminTable, table, tbody, td, tfoot, th, thead, tr {
+    background-color: #252525; /* Change this to the desired background color */
+    color : white;
+}
+.dataTables_length {
+color:white;
+}
+
+.dataTables_info{
+color:white;
+}
+div#adminTable_info {
+    color: white;
+}
+select {
+    color: red;
+}
+
+.Del_form{
+    display: inline;
+}
+.Del_form > button {
+    border-radius: 16px;
+    background-color: transparent;
+    color: red;
+}
+
+.navbar {
+    background-color: #333;
+    color: #fff;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem;
+}
+
+.navbar-brand {
+    color: #fff;
+    font-size: 1.5rem;
+}
+
+.navbar-menu {
+    display: flex;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    gap: 10px;
+}
+
+.navbar-item {
+    margin-right: 1rem;
+}
+
+.navbar-link {
+    color: #fff;
+    text-decoration: none;
+}
+
+.image-boxes {
+    display: flex;
+    /* width: 100%; */
+    /* height: 50vh; */
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.user-image {
+    /* width: 100%; */
+    max-width: 50%;
+    /* height: auto; */
+    margin: 10px;
+    border-radius: 0.95rem;
+    box-shadow: 0 0 50px rgb(0 204 255 / 66%);
+}

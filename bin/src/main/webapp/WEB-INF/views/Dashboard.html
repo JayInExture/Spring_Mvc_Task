@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>User Dashboard</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/assets/css/Dashboard.css}">
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.25/css/jquery.dataTables.css">
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.25/js/jquery.dataTables.js"></script>
+
+</head>
+<body>
+<!--<div th:replace="Header :: header"></div>-->
+<nav class="navbar">
+    <div class="navbar-brand">Dashboard</div>
+    <ul class="navbar-menu">
+        <li class="navbar-item"><a href="#" class="navbar-link">Home</a></li>
+        <li class="navbar-item"><a href="#" class="navbar-link">Profile</a></li>
+<!--        <li th:if="${user.userType == 'admin'}" class="navbar-item">-->
+<!--            <a th:href="@{/index?fromAdmin=true}" class="navbar-link">Add User</a>-->
+<!--        </li>-->
+        <li class="navbar-item">
+            <form action="logout" method="post">
+                <input type="submit" value="Logout">
+            </form>
+        </li>
+    </ul>
+</nav>
+
+        <h2>Welcome! <span th:text="${user.firstName}">First Name</span> <span th:text="${user.lastName}">Last Name</span></h2>
+<div th:if="${user.userType == 'admin'}">
+    <section class="admin_dash">
+        <table id="adminTable" border="1">
+            <thead>
+            <tr>
+                <th>ID</th>
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th>Email</th>
+                <th>Date of Birth</th>
+                <th>Country</th>
+                <th>User Type</th>
+                <th>Addresses</th>
+                <th>Actions</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="user : ${users}">
+                <td th:text="${user.id}"></td>
+                <td th:text="${user.firstName}"></td>
+                <td th:text="${user.lastName}"></td>
+                <td th:text="${user.email}"></td>
+                <td th:text="${user.dob}"></td>
+                <td th:text="${user.country}"></td>
+                <td th:text="${user.userType}"></td>
+                <td>
+                    <ol>
+                        <li th:each="address : ${user.addresses}" th:text="${address.street + ', ' + address.city + ', ' + address.zip + ', ' + address.state}"></li>
+
+                    </ol>
+                </td>
+                <td>
+                    <a th:href="@{/editUser(id=${user.id})}">Edit</a>
+                    <form class="Del_form" action="deleteUser" method="post">
+                        <input type="hidden" name="id" th:value="${user.id}">
+                        <button type="submit" onclick="return confirm('Are you sure you want to delete this user?')">Delete</button>
+                    </form>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </section>
+    <script>
+        $(document).ready(function() {
+            $('#adminTable').DataTable();
+        });
+    </script>
+</div>
+
+<div th:if="${user.userType != 'admin'}">
+    <section class="user_d">
+        <h3>Welcome! <span th:text="${user.firstName}">First Name</span> <span th:text="${user.lastName}">Last Name</span></h3>
+        <table border="1">
+            <tr>
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th>Email</th>
+                <th>Date of Birth</th>
+                <th>Country</th>
+            </tr>
+            <tr>
+                <td th:text="${user.firstName}"></td>
+                <td th:text="${user.lastName}"></td>
+                <td th:text="${user.email}"></td>
+                <td th:text="${user.dob}"></td>
+                <td th:text="${user.country}"></td>
+            </tr>
+        </table>
+
+        <h2>Addresses</h2>
+        <table border="1">
+            <tr>
+                <th>Street</th>
+                <th>City</th>
+                <th>ZIP</th>
+                <th>State</th>
+            </tr>
+
+            <tr th:each="address : ${user.addresses}">
+                <td th:text="${address.street}"></td>
+                <td th:text="${address.city}"></td>
+                <td th:text="${address.zip}"></td>
+                <td th:text="${address.state}"></td>
+                <td>
+                    <a th:href="@{/editUser(id=${user.id})}">Edit</a>
+                </td>
+            </tr>
+        </table>
+
+<!--        <h2>Images</h2>-->
+<!--        <div class="image-boxes">-->
+<!--            <img class="user-image" th:each="base64Image : ${base64Images}" th:src="'data:image/jpeg;base64,' + ${base64Image}">-->
+<!--        </div>-->
+    </section>
+</div>
+
+<!--<div th:replace="Footer :: footer"></div>-->
+</body>
+</html>
