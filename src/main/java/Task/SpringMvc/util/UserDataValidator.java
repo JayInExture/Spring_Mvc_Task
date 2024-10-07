@@ -66,13 +66,13 @@ public class UserDataValidator {
             return "Invalid interests";
         }
 
-        String[] streets = userData.get("addresses[0].street").split(",");
-        String[] cities = userData.get("addresses[0].city").split(",");
-        String[] zips = userData.get("addresses[0].zip").split(",");
-        String[] states = userData.get("addresses[0].state").split(",");
-        if (!isValidAddress(streets, cities, zips, states)) {
-            return "Invalid addresses";
-        }
+//        String[] streets = userData.get("addresses[0].street").split(",");
+//        String[] cities = userData.get("addresses[0].city").split(",");
+//        String[] zips = userData.get("addresses[0].zip").split(",");
+//        String[] states = userData.get("addresses[0].state").split(",");
+//        if (!isValidAddress(streets, cities, zips, states)) {
+//            return "Invalid addresses";
+//        }
 
         return null;
     }
@@ -158,9 +158,9 @@ public class UserDataValidator {
         if (!isValidDob(userData.getDob())) {
             return "Invalid DOB";
         }
-        if (!isValidAddressNew(userData.getAddresses())) {
-            return "Invalid addresses";
-        }
+//        if (!isValidAddressNew(userData.getAddresses())) {
+//            return "Invalid addresses";
+//        }
         
         return null;
     }
